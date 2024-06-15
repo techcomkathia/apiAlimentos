@@ -13,7 +13,6 @@ class BancoDados:
         return self.dados
 
     def getAlimento(self, idAlimento):
-
         chaves = self.dados.keys()
         for chave in chaves:
             print(chave)
@@ -22,6 +21,13 @@ class BancoDados:
 
         return {"dados": "o id informado não existe no banco", "statusCode": 404}
 
+    def setAlimento(self, alimento: Alimento):
+        chaves = self.dados.keys()
+        for chave in chaves:
+            if alimento.id == chave:
+                return {"dados": "o id informado já existe dentro do banco", "statusCode": 400}
+        self.dados[alimento.id]= alimento
+        return  {"dados": alimento, "info": "alimento criado com sucesso", "statusCode": 200}
 
 bd = BancoDados()
 

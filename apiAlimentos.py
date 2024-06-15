@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from BancoDados import bd
+from Alimentos import ModelAlimento
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -16,5 +17,9 @@ def buscarTodosOsAlimentos():
 @app.get('/alimentos/{id}')
 def buscarUmAlimento(id: int):
     return bd.getAlimento(id)
+
+@app.post('/alimentos/novo/')
+def criarNovoAlimento(novoAlimento : ModelAlimento):
+    return bd.setAlimento(novoAlimento)
 
 
