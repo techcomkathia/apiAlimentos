@@ -12,4 +12,4 @@ class Alimento:
 
 alimento1 = Alimento(1, 'uva', 10.50, True, 10, '')
 
-print(alimento1.nome)
+# print(alimento1.nome)
